@@ -20,7 +20,7 @@ def dpsave(img, filename):
     nib.save(img, filename)
 
 
-if __name__="__main__":
+if __name__=="__main__":
     fmetadata = "/input/metadata.json"
     # Fetch metadata:
     metadata = json.load(open(fmetadata))
