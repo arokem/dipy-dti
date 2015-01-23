@@ -27,8 +27,9 @@ if __name__=="__main__":
     fdata, fbval, fbvec = [metadata[k] for k in ["fdata", "fbval", "fbvec"]]
 
     # Load the data:
-    img = nib.load(str(fdata))
-    gtab = grad.gradient_table(str(fbval), str(fbvec))
+    img = nib.load(op.join('/input', str(fdata)))
+    gtab = grad.gradient_table(op.join('/input', str(fbval)),
+                               op.join('/input', str(fbvec)))
     data = img.get_data()
     affine = img.get_affine()
 
