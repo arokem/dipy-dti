@@ -48,8 +48,6 @@ if __name__=="__main__":
     # Save to file:
     dpsave(tensor_img, root + '_tensor.nii.gz')
     for arr, label in zip([tenfit.ad, tenfit.rd, tenfit.md, tenfit.fa],
-                          ["ad", "rd", "md", "fa"]):
+                          ["_ad", "_rd", "_md", "_fa"]):
         dpsave(nib.Nifti1Image(arr.astype("float32"), affine),
-               op.join('/output/', root + '%.nii.gz'%label)
-
-
+               op.join('/output/', root + '%s.nii.gz'%label))
