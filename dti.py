@@ -34,15 +34,12 @@ if __name__=="__main__":
     affine = img.get_affine()
 
     # Get the optional params:
-    if not metadata.haskey('fit_method'):
-        fit_method = "WLS"
-    else:
-        fit_method = metadata['fit_method']
-
-    if not metadata.haskey('fmask'):
+    fit_method = metadata.get('fit_method', "WLS")
+    fmask = metadata.get('fmask', None)
+    if fmask is None:
         mask = None
     else:
-        mask = nib.load(metadata['fmask']).get_data().astype(bool)
+        mask = nib.load(fmask).get_data().astype(bool)
 
     # Fit the model:
     tenmodel = dti.TensorModel(gtab, fit_method=fit_method, mask=mask)
