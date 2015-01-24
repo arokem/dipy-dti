@@ -42,8 +42,8 @@ if __name__=="__main__":
         mask = nib.load(fmask).get_data().astype(bool)
 
     # Fit the model:
-    tenmodel = dti.TensorModel(gtab, fit_method=fit_method, mask=mask)
-    tenfit = tenmodel.fit(data)
+    tenmodel = dti.TensorModel(gtab, fit_method=fit_method)
+    tenfit = tenmodel.fit(data, mask=mask)
 
     # Extract the nifti convention parameters:
     lower_triangular = tenfit.lower_triangular()
