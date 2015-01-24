@@ -33,13 +33,19 @@ if __name__=="__main__":
     data = img.get_data()
     affine = img.get_affine()
 
+    # Get the optional params:
     if not metadata.haskey('fit_method'):
         fit_method = "WLS"
     else:
-        fit_method=metadata['fit_method']
-        
+        fit_method = metadata['fit_method']
+
+    if not metadata.haskey('fmask'):
+        mask = None
+    else:
+        mask = nib.load(metadata['fmask']).get_data().astype(bool)
+
     # Fit the model:
-    tenmodel = dti.TensorModel(gtab, fit_method=fit_method)
+    tenmodel = dti.TensorModel(gtab, fit_method=fit_method, mask=mask)
     tenfit = tenmodel.fit(data)
 
     # Extract the nifti convention parameters:
