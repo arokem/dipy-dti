@@ -6,19 +6,24 @@ Parameters
 ---------
 
 fdata : str
-   The name of a nifti file with preprocessed diffusion data.
+
+The name of a nifti file with preprocessed diffusion data.
 
 fbval : str
-   The name of a text-file with b-values in FSL format.
+
+The name of a text-file with b-values in FSL format.
 
 fbvec : str
-    The name of a text file with the b-vectors in FSL format.
+
+The name of a text file with the b-vectors in FSL format.
 
 fmask : str, optional
-    The name of a nifti file containing boolean mask of locations to
-   analyze. Default: no masking
+
+The name of a nifti file containing boolean mask of locations to
+analyze. Default: no masking 
 
 fit_method: str, optional
+
     Chooses the algorithm to use in fitting: {"WLS" | "OLS" | "NNLS" |
    "RESTORE"}. Default: "WLS", which uses weighted least-squares (see [1]_ for
    details). Choosing "RESTORE" will use an automated outlier-rejection
